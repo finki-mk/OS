@@ -1,4 +1,4 @@
-package mk.ukim.finki.os.examples.arraydb.ls_mv_cp;
+package mk.ukim.finki.os.examples.ls_mv_cp;
 
 import java.io.*;
 import java.util.ArrayList;
