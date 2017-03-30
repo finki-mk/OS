@@ -63,6 +63,9 @@ public class CsvToOrderedBinaryDatabase {
     String value = elements[1].trim();
     String status = elements[2].trim();
     validateElements(value, status);
+
+    randomAccessFile.seek(rowNumber*ELEMENT_SIZE);
+
     randomAccessFile.writeLong(rowNumber);
     // if the characters are cyrillic, there will be 2 bytes per character
     System.out.println("Value length: " + value.getBytes().length);
