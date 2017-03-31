@@ -30,7 +30,6 @@ public abstract class TemplateThread extends Thread {
       e.printStackTrace();
       hasException = true;
     }
-    System.out.println("Done: " + this);
   }
 
   public void setException(Exception exception) {
