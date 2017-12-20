@@ -51,7 +51,7 @@ public class Concert2State extends AbstractState {
 
   public void formBackingVocals() {
     logException(performerHere.assertEquals(1, 5, "The performer is not here"));
-    Switcher.forceSwitch(3);
+    Switcher.forceSwitch(30);
     if (getThread() instanceof Concert2.Baritone) {
       log(baritone.incrementWithMax(false), "Baritone for backing group");
     } else if (getThread() instanceof Concert2.Tenor) {
@@ -73,7 +73,7 @@ public class Concert2State extends AbstractState {
       }
       numParticipants++;
     }
-    Switcher.forceSwitch(3);
+    Switcher.forceSwitch(30);
     if (getThread() instanceof Concert2.Baritone) {
       log(baritone.incrementWithMax(false), "Baritone performed");
     } else if (getThread() instanceof Concert2.Tenor) {

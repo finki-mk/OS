@@ -31,12 +31,16 @@ public class MusicBandState extends AbstractState {
     synchronized (this) {
       groupMembersCount++;
     }
-    Switcher.forceSwitch(3);
     if (getThread() instanceof MusicBand.GuitarPlayer) {
       log(guitarPlayer.incrementWithMax(false), "Guitar Player is playing");
     } else if (getThread() instanceof MusicBand.Singer) {
       log(singer.incrementWithMax(false), "Singer is playing");
     }
+    Switcher.forceSwitch(3);
+    if(guitarPlayer.getValue()!=3 || singer.getValue()!=2 ) {
+//      log(new PointsException(5,"Ne se prisutni site"),"");
+    }
+
   }
 
   public void evaluate() {
