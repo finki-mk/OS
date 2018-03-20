@@ -26,7 +26,8 @@ public class FileManagerImpl implements FileManager {
   }
 
   public File parentDirectory(File file) {
-    return file.getParentFile();
+    File absolute=new File(file.getAbsolutePath());
+    return absolute.getParentFile();
   }
 
   public boolean deleteDirectoryRecursively(File directory) {
