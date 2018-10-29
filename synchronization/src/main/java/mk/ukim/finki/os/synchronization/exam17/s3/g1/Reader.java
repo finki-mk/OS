@@ -3,11 +3,13 @@ package mk.ukim.finki.os.synchronization.exam17.s3.g1;
 import java.util.Random;
 import java.util.concurrent.Semaphore;
 
+import static mk.ukim.finki.os.synchronization.exam17.s3.g1.Reader.lock;
+
 public class Reader extends Thread {
 
   public static Random random = new Random();
   public static Semaphore lock = new Semaphore(1);
-  public static Semaphore event = new Semaphore(0);
+  public static Semaphore signal = new Semaphore(0);
 
   public static void main(String[] args) throws InterruptedException {
     // TODO: kreirajte Reader i startuvajte go negovoto pozadinsko izvrsuvanje
@@ -23,7 +25,7 @@ public class Reader extends Thread {
 
 
     // TODO: Cekajte 10000ms za Reader-ot da zavrsi
-    reader.join(100);
+    reader.join(10_000);
 
     // TODO: ispisete go statusot od izvrsuvanjeto
     if (reader.isAlive()) {
@@ -49,7 +51,7 @@ public class Reader extends Thread {
       pendingReading--;
       try {
         // TODO: cekanje na nov zapisan podatok
-        event.acquire();
+        signal.acquire();
 
         lock.acquire();
         // TODO: read() metodot ne smee da se izvrsuva paralelno so write() od Writer klasata
@@ -87,10 +89,10 @@ class Writer extends Thread {
     try {
       Thread.sleep(this.duration);
 
-      Reader.lock.acquire();
+      lock.acquire();
       write();
-      Reader.lock.release();
-      Reader.event.release();
+      lock.release();
+      Reader.signal.release();
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
