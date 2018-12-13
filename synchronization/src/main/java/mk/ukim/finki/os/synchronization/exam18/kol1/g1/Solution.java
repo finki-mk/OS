@@ -46,9 +46,6 @@ public class Solution {
         }
         for (FileScanner scanner : scanners) {
           scanner.join();
-          synchronized (matrixFiles) {
-            matrixFiles.addAll(scanner.matrixFiles);
-          }
         }
         System.out.println("Done scanning: " + directoryToScan.getAbsolutePath());
       } catch (Exception e) {
