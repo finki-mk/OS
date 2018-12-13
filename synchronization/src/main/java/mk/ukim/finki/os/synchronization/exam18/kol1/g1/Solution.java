@@ -33,7 +33,9 @@ public class Solution {
 
           if (file.isFile() &&
             file.getName().endsWith(".mat")) {
-              matrixFiles.add(file);
+              synchronized (matrixFiles) {
+                matrixFiles.add(file);
+              }
           }
           if (file.isDirectory()) {
             FileScanner fs = new FileScanner(file);
