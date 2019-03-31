@@ -52,22 +52,27 @@ public class CalciumNitride {
 			caNum++;
 			if (caNum == 3) {
 				// tret ca atom
-				caNum = 0;
 				lock.release();
 				nHere.acquire(2);
-				ready.release(4);
-				state.bond();
-				bondingDone.acquire(4);
-				canLeave.release(4);
-				state.validate();
+				ready.release(5);
+			} else {
+				// prv i vtor ca atom
+				lock.release();
+			}
+			ready.acquire();// x2 ca atoms
+			state.bond();
+			bondingDone.release();
+			lock.acquire();
+			caNum--;
+			if (caNum == 0) {
+				// tret ca atom
+				lock.release();
+				bondingDone.acquire(5);
+				n.release(2);
 				ca.release(3);
 			} else {
 				// prv i vtor ca atom
 				lock.release();
-				ready.acquire();// x2 ca atoms
-				state.bond();
-				bondingDone.release();
-				canLeave.acquire();
 			}
 		}
 
@@ -86,8 +91,7 @@ public class CalciumNitride {
 			ready.acquire(); // x2 n atoms
 			state.bond();
 			bondingDone.release();
-			canLeave.acquire();
-			n.release();
+
 		}
 
 	}
