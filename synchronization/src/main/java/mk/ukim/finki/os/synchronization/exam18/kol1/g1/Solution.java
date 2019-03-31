@@ -33,7 +33,9 @@ public class Solution {
 
           if (file.isFile() &&
             file.getName().endsWith(".mat")) {
-              matrixFiles.add(file);
+              synchronized (matrixFiles) {
+                matrixFiles.add(file);
+              }
           }
           if (file.isDirectory()) {
             FileScanner fs = new FileScanner(file);
@@ -44,9 +46,6 @@ public class Solution {
         }
         for (FileScanner scanner : scanners) {
           scanner.join();
-          synchronized (matrixFiles) {
-            matrixFiles.addAll(scanner.matrixFiles);
-          }
         }
         System.out.println("Done scanning: " + directoryToScan.getAbsolutePath());
       } catch (Exception e) {
