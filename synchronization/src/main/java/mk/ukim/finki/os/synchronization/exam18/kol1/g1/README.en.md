@@ -2,26 +2,26 @@ Matrix multiplication
 ===
 
 1. **(5 points)** Implement the thread `Reader` that will read the content of the file provided as the property 
-`matrixFile` in background. The code for matrix reading is given in the `run()` method. You need to complete this code and
+`matrixFile`, in the background. The code for matrix reading is given in the `run()` method. You need to complete this code and
 provide a variable `in` that will have the `readLine()` method for reading the content of the file. 
 
-2. **(5 points)** Complete the `Writer` class such that it will behave as thread and will write in background the element 
-values of `matrix` into the file `outputPath`, one element per line. 
+2. **(5 points)** Complete the `Writer` class so that it will behave as a thread and will write the element values of `matrix` 
+into the file `outputPath`, in the background, one element per line. 
 
-3. **(5 points)** Complete the `Transformer` class such that it will behave as thread and will compute the result in 
-background. It is not allowed more that 15 parallel executions of the given code in the `run()` method. 
+3. **(5 points)** Complete the `Transformer` class such that it will behave as a thread and will compute the result in 
+the background. It is not allowed to have more than 15 parallel executions of the given code in the `run()` method. 
 
-4. **(10 points)** Implement the class `FileScanner` that will behave as a *thread*. This class should recursively scan 
-the directory given in the property `directoryToScan` and should find all the files with extension `.mat`. If the directory 
-`directoryToScan` does not exist, you should provide appropriate message. The recursive scanning should be executed 
+4. **(10 points)** Implement the class `FileScanner` that will behave as a thread. This class should recursively scan 
+the directory designated by `directoryToScan` and should find all files with the `.mat` extension. If the directory 
+`directoryToScan` does not exist, you should provide an appropriate message. The recursive scanning should be executed 
 in separate thread instances of the class `FileScanner`. At the end of the `directoryToScan` scanning, the `FileScanner`
-should waid the results form all `subDirectory` threads. 
+should wait for the results form all `subDirectory` threads. 
 
-5. **(20 points)** Complete the `MainG1.main` method according to `//todo:` comments.
+5. **(20 points)** Complete the `MainG1.main` method according to the `//todo:` comments.
 
 6. **(5 points)** Ensure mutual exclusion for all critical regions.    
 
-The starter code that contains all previously mentioned classes is the follows: 
+The starter code that contains all previously mentioned classes is the following: 
 
 ```java
 import java.io.File;
@@ -46,7 +46,7 @@ class Reader extends Thread {
     // todo: complete this method according to the text description
 
     try {
-      // todo: The variable in should provide the readLine() method
+      // todo: The variable s should provide the readLine() method
       int n = Integer.parseInt(s.readLine().trim());
       this.matrix = new int[n][n];
 

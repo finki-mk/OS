@@ -68,7 +68,7 @@ public class Solution {
     @Override
     public void run() {
       // todo: complete this method according to the text description
-      // todo: The variable in should provide the readLine() method
+      // todo: The variable s should provide the readLine() method
       try (BufferedReader s = new BufferedReader(new FileReader(new File(matrixFile)))) {
 
         int n = Integer.parseInt(s.readLine().trim());
