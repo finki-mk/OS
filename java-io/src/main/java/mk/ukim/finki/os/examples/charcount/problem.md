@@ -1,4 +1,4 @@
-Char counting problem
+Char Counting Problem
 -- 
 
 *@author: Pance Ribarski*
